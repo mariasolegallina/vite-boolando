@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+ul,
+ol,
+menu {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure>img {
+    display: block;
+    width: 100%;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* utility */
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
