@@ -9,6 +9,16 @@ export default {
             name: String,
             price: Number,
             isInFavorites: Boolean,
+            badges: [
+                {
+                    type: String,
+                    value: String,
+                },
+                {
+                    type: String,
+                    value: String,
+                }
+            ]
         }
     }
 }
@@ -16,8 +26,8 @@ export default {
 
 <template>
     <figure class="card__image">
-        <img class="image" :src="product.backImage" alt="">
-        <img class="image-hover" :src="product.frontImage" alt="">
+        <img class="image" :src="`/img/${product.frontImage}`" alt="">
+        <img class="image-hover" :src="`/img/${product.backImage}`" alt="">
         <span class="heart-icon">&hearts;</span>
         <div class="badge-container">
             <div class="badge badge--discount">-50%</div>
@@ -37,16 +47,16 @@ export default {
 
 .card__image {
     position: relative;
-}
 
-.image-hover {
-    position: absolute;
-    top: 0px;
-    opacity: 0;
-}
+    .image-hover {
+        position: absolute;
+        top: 0px;
+        opacity: 0;
+    }
 
-.card:hover .image-hover {
-    opacity: 1;
+    &:hover .image-hover {
+        opacity: 1;
+    }
 }
 
 .heart-icon {
@@ -71,15 +81,17 @@ export default {
     font-size: 10px;
     color: white;
     padding: 5px;
-}
 
-.badge.badge--discount {
-    background-color: red;
-}
+    &.badge--discount {
+        background-color: $discount;
+        margin-right: 4px;
+    }
 
-.badge.badge--sost {
-    background-color: green;
-    font-weight: bold;
+    &.badge--sost {
+        background-color: $sustainability;
+        font-weight: bold;
+    }
+
 }
 
 .card__text {
@@ -99,13 +111,14 @@ export default {
 
 .price {
     font-size: 12px;
-}
 
-.price.price--new {
-    color: red;
-}
+    &.price.price--new {
+        color: $discount;
+    }
 
-.price.price--old {
-    text-decoration-line: line-through;
+    &.price.price--old {
+        text-decoration-line: line-through;
+    }
+
 }
 </style>
