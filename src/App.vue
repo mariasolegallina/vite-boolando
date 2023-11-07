@@ -2,6 +2,7 @@
 import PageHeader from './components/PageHeader.vue';
 import PageFooter from './components/PageFooter.vue';
 import ProductsCards from './components/ProductsCards.vue';
+import DbJson from './db.json';
 
 export default {
   components: {
@@ -11,8 +12,11 @@ export default {
   },
   data() {
     return {
-
+      dbJson: DbJson,
     }
+  },
+  created() {
+    console.log("che c'è qui?", this.dbJson.products)
   }
 }
 </script>
@@ -20,7 +24,16 @@ export default {
 <template>
   <PageHeader />
   <main>
-    <ProductsCards />
+    <div class="section">
+      <div class="container">
+        <div class="row columnrow">
+          <div v-for="(product, i) in dbJson.products" key="i" class="col-4">
+            <ProductsCards :product="product" class="card" />
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
   <PageFooter />
 </template>

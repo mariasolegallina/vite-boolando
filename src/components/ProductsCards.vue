@@ -1,124 +1,34 @@
 <script>
 export default {
-    data() {
-        return {
-
+    props: {
+        product: {
+            id: Number,
+            frontImage: String,
+            backImage: String,
+            brand: String,
+            name: String,
+            price: Number,
+            isInFavorites: Boolean,
         }
     }
 }
 </script>
 
 <template>
-    <div class="section">
-        <div class="container">
-            <div class="row columnrow">
-                <div class="col-4">
-                    <div class="card">
-                        <figure class="card__image">
-                            <img class="image" src="/img/1.webp" alt="">
-                            <img class="image-hover" src="/img/1b.webp" alt="">
-                            <span class="heart-icon">&hearts;</span>
-                            <div class="badge-container">
-                                <div class="badge badge--discount">-50%</div>
-                                <div class="badge badge--sost">Sostenibilità</div>
-                            </div>
-                        </figure>
-                        <div class="card__text">
-                            <h3 class="brand">Levi's</h3>
-                            <h3 class="product">relaxed fit tee unisex</h3>
-                            <span class="price price--new">14,99 €</span>
-                            <span class="price price--old">29,99 €</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <figure class="card__image">
-                            <img class="image" src="/img/2.webp" alt="">
-                            <img class="image-hover" src="/img/2b.webp" alt="">
-                            <span class="heart-icon">&hearts;</span>
-                            <div class="badge-container">
-                                <div class="badge badge--discount">-30%</div>
-                            </div>
-                        </figure>
-                        <div class="card__text">
-                            <h3 class="brand">Guess</h3>
-                            <h3 class="product">roses tee</h3>
-                            <span class="price price--new">20,99 €</span>
-                            <span class="price price--old">29,99 €</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <figure class="card__image">
-                            <img class="image" src="/img/3.webp" alt="">
-                            <img class="image-hover" src="/img/3b.webp" alt="">
-                            <span class="heart-icon">&hearts;</span>
-                            <div class="badge-container">
-                                <div class="badge badge--discount">-30%</div>
-                            </div>
-                        </figure>
-                        <div class="card__text">
-                            <h3 class="brand">Come Zucchero Filato</h3>
-                            <h3 class="product">voglia di colori pastello</h3>
-                            <span class="price price--new">129,99 €</span>
-                            <span class="price price--old">184,99 €</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <figure class="card__image">
-                            <img class="image" src="/img/4.webp" alt="">
-                            <img class="image-hover" src="/img/4b.webp" alt="">
-                            <span class="heart-icon">&hearts;</span>
-                            <div class="badge-container">
-                                <div class="badge badge--discount">-50%</div>
-                                <div class="badge badge--sost">Sostenibilità</div>
-                            </div>
-                        </figure>
-                        <div class="card__text">
-                            <h3 class="brand">Levi's</h3>
-                            <h3 class="product">tee unisex</h3>
-                            <span class="price price--new">14,99 €</span>
-                            <span class="price price--old">29,99 €</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <figure class="card__image">
-                            <img class="image" src="/img/5.webp" alt="">
-                            <img class="image-hover" src="/img/5b.webp" alt="">
-                            <span class="heart-icon">&hearts;</span>
-                        </figure>
-                        <div class="card__text">
-                            <h3 class="brand">Maya Deluxe</h3>
-                            <h3 class="product">stripe bodice</h3>
-                            <span class="price price--new">99,99 €</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <figure class="card__image">
-                            <img class="image" src="/img/6.webp" alt="">
-                            <img class="image-hover" src="/img/6b.webp" alt="">
-                            <span class="heart-icon">&hearts;</span>
-                            <div class="badge-container">
-                                <div class="badge badge--sost">Sostenibilità</div>
-                            </div>
-                        </figure>
-                        <div class="card__text">
-                            <h3 class="brand">Esprit</h3>
-                            <h3 class="product">maglione - black</h3>
-                            <span class="price price--new">29,99 €</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <figure class="card__image">
+        <img class="image" :src="product.backImage" alt="">
+        <img class="image-hover" :src="product.frontImage" alt="">
+        <span class="heart-icon">&hearts;</span>
+        <div class="badge-container">
+            <div class="badge badge--discount">-50%</div>
+            <div class="badge badge--sost">Sostenibilità</div>
         </div>
+    </figure>
+    <div class="card__text">
+        <h3 class="brand">{{ product.brand }}</h3>
+        <h3 class="product">{{ product.name }}</h3>
+        <span class="price price--new">{{ product.price }}</span>
+        <span class="price price--old">29,99 €</span>
     </div>
 </template>
 
