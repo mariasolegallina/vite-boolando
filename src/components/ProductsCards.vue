@@ -30,7 +30,8 @@ export default {
     <div class="card__text">
         <h3 class="brand">{{ product.brand }}</h3>
         <h3 class="product">{{ product.name }}</h3>
-        <span class="price price--new">{{ product.price }}</span>
+        <span class="price" v-for="badge in product.badges" :class="badge.type === discount ? 'price--old' : ''">{{
+            product.price }}</span>
         <span class="price price--old">29,99 €</span>
     </div>
 </template>
@@ -104,6 +105,8 @@ export default {
 
 .price {
     font-size: 12px;
+    margin-right: 4px;
+
 
     &.price.price--new {
         color: $discount;
@@ -111,6 +114,7 @@ export default {
 
     &.price.price--old {
         text-decoration-line: line-through;
+        color: $discount;
     }
 
 }

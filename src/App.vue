@@ -2,7 +2,9 @@
 import PageHeader from './components/PageHeader.vue';
 import PageFooter from './components/PageFooter.vue';
 import ProductsCards from './components/ProductsCards.vue';
-import DbJson from './db.json';
+// import DbJson from './db.json';
+import axios from 'axios'
+import { store } from './store'
 
 export default {
   components: {
@@ -12,11 +14,19 @@ export default {
   },
   data() {
     return {
-      dbJson: DbJson,
+      // dbJson: DbJson,
+      store: store,
+      productsUrl: 'http://localhost:3000/products'
     }
   },
   created() {
-    console.log("che c'è qui?", this.dbJson.products)
+    // console.log("che c'è qui?", this.dbJson.products)
+  },
+  mounted() {
+    axios.get(this.productsUrl)
+      .then(response => {
+        console.log(response.data)
+      })
   }
 }
 </script>
