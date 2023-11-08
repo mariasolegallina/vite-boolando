@@ -1,25 +1,15 @@
 <script>
 export default {
     props: {
-        product: {
-            id: Number,
-            frontImage: String,
-            backImage: String,
-            brand: String,
-            name: String,
-            price: Number,
-            isInFavorites: Boolean,
-            badges: [
-                {
-                    type: String,
-                    value: String,
-                },
-                {
-                    type: String,
-                    value: String,
-                }
-            ]
+        product: Object,
+    },
+    data() {
+        return {
+
         }
+    },
+    methods: {
+
     }
 }
 </script>
@@ -30,8 +20,11 @@ export default {
         <img class="image-hover" :src="`/img/${product.backImage}`" alt="">
         <span class="heart-icon">&hearts;</span>
         <div class="badge-container">
-            <div class="badge badge--discount">-50%</div>
-            <div class="badge badge--sost">Sostenibilità</div>
+            <div v-for="(badge) in  product.badges " class="badge badge--discount"
+                :class="badge.value === 'Sostenibilità' ? 'badge--sost' : ''">
+                {{ badge.value }}
+            </div>
+            <!-- <div class="badge badge--sost">Sostenibilità</div> -->
         </div>
     </figure>
     <div class="card__text">
