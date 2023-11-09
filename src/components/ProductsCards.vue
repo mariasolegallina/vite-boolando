@@ -1,11 +1,16 @@
 <script>
+import { store } from '../store'
+
 export default {
     props: {
-        product: Object,
+        product: {
+            store: store
+        }
     },
     data() {
         return {
-
+            store: store,
+            products: store.products,
         }
     },
     methods: {
@@ -24,7 +29,6 @@ export default {
                 :class="badge.value === 'Sostenibilità' ? 'badge--sost' : ''">
                 {{ badge.value }}
             </div>
-            <!-- <div class="badge badge--sost">Sostenibilità</div> -->
         </div>
     </figure>
     <div class="card__text">

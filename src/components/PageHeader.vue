@@ -20,9 +20,7 @@ export default {
             <div class="row justify-between align-center">
                 <div class="col">
                     <ul class="nav-menu">
-                        <li class="nav-menu__item"><a href="#">Donna</a></li>
-                        <li class="nav-menu__item"><a href="#">Uomo</a></li>
-                        <li class="nav-menu__item"><a href="#">Bambini</a></li>
+                        <li class="nav-menu__item" v-for="(item, i) in menu"><a href="#">{{ item }}</a></li>
                     </ul>
                 </div>
                 <div class="col logo">
@@ -40,7 +38,7 @@ export default {
 @use '../styles/partials/variables' as *;
 
 header {
-    background-color: #ff6800;
+    background-color: $main-orange;
     color: white;
 }
 

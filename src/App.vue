@@ -16,18 +16,21 @@ export default {
     return {
       // dbJson: DbJson,
       store: store,
-      productsUrl: 'http://localhost:3000/products'
+      products: store.products,
     }
   },
   created() {
-    // console.log("che c'è qui?", this.dbJson.products)
-  },
-  mounted() {
-    axios.get(this.productsUrl)
-      .then(response => {
-        console.log(response.data)
+    axios.get('http://localhost:3000/products')
+      .then(res => {
+        const products = res.data;
+        console.log(res, products)
+        this.store.products = products
       })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
   }
+
 }
 </script>
 
@@ -37,7 +40,7 @@ export default {
     <div class="section">
       <div class="container">
         <div class="row columnrow">
-          <div v-for="(product, i) in dbJson.products" key="i" class="col-4">
+          <div v-for="(product, i) in store.products" :key="i" class="col-4">
             <ProductsCards :product="product" class="card" />
           </div>
         </div>
