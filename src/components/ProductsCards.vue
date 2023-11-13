@@ -3,40 +3,45 @@ import { store } from '../store'
 
 export default {
     props: {
-        product: {
-            store: store
-        }
+        product: Object
     },
     data() {
         return {
             store: store,
-            products: store.products,
         }
     },
     methods: {
+        //   onClick() {
+        //     // console.log(this.item.titolo)
+        //     // this.item = {} NON POSSIAMO FARLO
+        //     console.log(this.cottura)
+        //   },
+    },
 
-    }
 }
+
 </script>
 
 <template>
-    <figure class="card__image">
-        <img class="image" :src="`/img/${product.frontImage}`" alt="">
-        <img class="image-hover" :src="`/img/${product.backImage}`" alt="">
-        <span class="heart-icon">&hearts;</span>
-        <div class="badge-container">
-            <div v-for="(badge) in  product.badges " class="badge badge--discount"
-                :class="badge.value === 'Sostenibilità' ? 'badge--sost' : ''">
-                {{ badge.value }}
+    <div class="card">
+        <figure class="card__image">
+            <img class="image" :src="`/img/${product.frontImage}`" alt="">
+            <img class="image-hover" :src="`/img/${product.backImage}`" alt="">
+            <span class="heart-icon">&hearts;</span>
+            <div class="badge-container">
+                <div v-for="(badge) in  product.badges " class="badge badge--discount"
+                    :class="badge.value === 'Sostenibilità' ? 'badge--sost' : ''">
+                    {{ badge.value }}
+                </div>
             </div>
+        </figure>
+        <div class="card__text">
+            <h3 class="brand">{{ product.brand }}</h3>
+            <h3 @click="$emit('show')" class="product">{{ product.name }}</h3>
+            <span class="price" v-for="badge in product.badges" :class="badge.type === 'discount' ? 'price--old' : ''">
+                {{ product.price }}</span>
+            <!-- <span class="price price--old">29,99 €</span> -->
         </div>
-    </figure>
-    <div class="card__text">
-        <h3 class="brand">{{ product.brand }}</h3>
-        <h3 class="product">{{ product.name }}</h3>
-        <span class="price" v-for="badge in product.badges" :class="badge.type === discount ? 'price--old' : ''">{{
-            product.price }}</span>
-        <span class="price price--old">29,99 €</span>
     </div>
 </template>
 
